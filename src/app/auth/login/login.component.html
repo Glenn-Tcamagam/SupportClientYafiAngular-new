@@ -50,9 +50,14 @@
                 <button class="btn btn-danger w-100" type="submit">Se connecter</button>
 
                 <!-- Lien vers inscription -->
-                <div class="text-center mt-3">
+                <div class="text-first mt-3">
                     <small>Vous n'avez pas de compte ? <a style="color: brown;" (click)="navigateToRegister()">S'enregistrer</a></small>
                 </div>
+                  <p class="text-first mt-2" data-bs-target="#exampleModal"  data-bs-toggle="modal">
+ <a class="text-decoration-none text-danger forgot-password-link" >
+  Mot de passe oublié ?
+</a>
+</p>
             </div>
         </div>
 
@@ -68,6 +73,133 @@
 
 </form>
 
+
+
+
+
+
+
+
+<!--------------------------------------------------- Modal MODIFIER MOT DE PASSE -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Modifier Mot de passe</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+
+
+
+ <form
+  [formGroup]="resetPasswordForm"
+  (ngSubmit)="onSubmit2()"
+  class="p-4 border rounded shadow-sm bg-white"
+>
+  <!-- Code reçu par e-mail -->
+  <div class="mb-3">
+    <label for="code" class="form-label">Code reçu par e-mail</label>
+    <input
+      type="text"
+      id="code"
+      class="form-control"
+      formControlName="code"
+      placeholder="Entrez le code"
+    />
+    <div
+      *ngIf="code.invalid && (code.dirty || code.touched)"
+      class="text-danger mt-1"
+    >
+      Le code est requis.
+    </div>
+  </div>
+
+  <!-- Nouveau mot de passe -->
+  <div class="mb-3">
+    <!-- <label for="newResetPassword" class="form-label"
+      >Nouveau mot de passe</label
+    > -->
+    <input
+      type="password"
+      id="newResetPassword"
+      class="form-control"
+      formControlName="newResetPassword"
+      placeholder="Entrez un nouveau mot de passe"
+    />
+    <div
+      *ngIf="
+        newResetPassword.invalid && (newResetPassword.dirty || newResetPassword.touched)
+      "
+      class="text-danger mt-1"
+    >
+      Le mot de passe est requis&nbsp;(minimum&nbsp;6&nbsp;caractères).
+    </div>
+  </div>
+
+  <!-- Confirmation du mot de passe -->
+  <div class="mb-3">
+    <!-- <label for="confirmPassword" class="form-label"
+      >Confirmez le mot de passe</label
+    > -->
+    <input
+      type="password"
+      id="confirmPassword"
+      class="form-control"
+      formControlName="confirmPassword"
+      placeholder="Confirmez le mot de passe"
+    />
+    <div
+      *ngIf="
+        resetPasswordForm.errors?.['passwordMismatch'] &&
+        (confirmPassword.dirty || confirmPassword.touched)
+      "
+      class="text-danger mt-1"
+    >
+      Les mots de passe ne correspondent pas.
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-danger w-100"
+    [disabled]="resetPasswordForm.invalid"
+  >
+    Réinitialiser le mot de passe
+  </button>
+</form>
+
+
+
+
+
+
+        
+      
+
+
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ---------------------------------------FIN MODAL modifier mot de passe -->
+
+
+
+
+
+
+
+
+
 <!-- Script pour masquer/afficher le mot de passe -->
 <script>
     function togglePassword() {
@@ -82,3 +214,15 @@
         }
     }
 </script>
+
+
+<!-- MODAL -->
+
+ <script >var myModal = document.getElementById('myModal')
+      var myInput = document.getElementById('myInput')
+
+      myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+      })</script>
+
+<script src="Modal/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>

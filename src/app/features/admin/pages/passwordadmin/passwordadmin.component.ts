@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
+
 import { Router } from '@angular/router';
 import { AdminService } from '../profiladmin/admin.service';
 
@@ -12,6 +13,9 @@ import { AdminService } from '../profiladmin/admin.service';
   styleUrl: './passwordadmin.component.css'
 })
 export class PasswordadminComponent {
+
+
+
   oldPassword = '';
   newPassword = '';
   passwordMessage = '';
@@ -36,8 +40,10 @@ export class PasswordadminComponent {
         Validators.minLength(8),
         Validators.pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])/)
       ]],
-      confirmPassword: ['']
+      // confirmPassword: ['']
     }, { validators: this.passwordsMatch });
+
+
 
   }
 
@@ -48,7 +54,7 @@ registerForm: FormGroup ;
 
 passwordsMatch(group: FormGroup) {
   const password = group.get('password')?.value;
-  const confirm = group.get('confirmPassword')?.value;
+  // const confirm = group.get('confirmPassword')?.value;
   return password === confirm ? null : { notMatching: true };
 }
 
@@ -97,6 +103,7 @@ logout(): void {
   // Rediriger vers la page de login
   this.router.navigate(['/auth/login']);
 }
+
 
 
 

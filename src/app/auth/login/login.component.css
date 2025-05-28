@@ -20,6 +20,12 @@
     object-fit: contain;
 }
 
+  .forgot-password-link:hover {
+  text-decoration: underline!important;
+  color: #a00!important; /* rouge plus foncé au survol */
+  cursor: pointer;
+}
+
 #petitecran{
     display: none;
 }
@@ -29,3 +35,6 @@
     display: initial;
   }
   }
+
+
+
