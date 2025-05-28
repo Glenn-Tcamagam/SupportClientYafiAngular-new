@@ -1,0 +1,178 @@
+<app-navbarclient></app-navbarclient>
+<br><br>
+<div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-sm border-0 rounded-4 p-4">
+          <div class="text-center">
+            <!-- <img src="https://i.pravatar.cc/150?img=3" class="rounded-circle mb-3" alt="Photo de profil" width="120" height="120">
+            <h4 class="fw-bold">Tchamagam glenn</h4>
+            <p class="text-muted">glennwouagam&#64;gmail.com</p> -->
+            <div class="profile-picture-wrapper">
+                <img
+                  [src]="imagePreview || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnSA1zygA3rubv-VK0DrVcQ02Po79kJhXo_A&s'"
+                  alt="Photo de profil"
+                  class="profile-picture"
+                />
+
+
+                <!-- Icône de modification -->
+                <label for="fileInput" class="edit-icon">
+                  <i class="bi bi-pencil-fill"></i>
+                </label>
+                <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden />
+              </div>
+              <h4 class="fw-bold">{{ profile?.nom }}</h4>
+              <p class="text-muted">{{ profile?.email }}</p>
+
+
+
+
+
+          </div>
+
+          <hr>
+
+          <div class="row mb-3">
+            <div class="col-sm-4 text-muted">Téléphone</div>
+            <div class="col-sm-8">{{ profile?.telephone }}</div>
+          </div>
+
+          <div class="col-md-4  justify-content-end">
+      <button class="btn btn-danger  btn-sm" data-bs-target="#exampleModal"  data-bs-toggle="modal" >
+        <i class="bi bi-lock me-1"></i> Modifier Mot de passe
+      </button>
+      </div>
+
+
+          <!-- <div class="text-center mt-4">
+            <button class="btn btn-outline-primary px-4">Modifier le profil</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--------------------------------------------------- Modal MODIFIER MOT DE PASSE -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Modifier Mot de passe</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+
+
+
+  <form [formGroup]="passwordForm" (ngSubmit)="onSubmit()">
+    <!-- Ancien mot de passe -->
+    <div class="mb-3">
+      <!-- <label for="currentPassword" class="form-label">Ancien mot de passe</label> -->
+      <div class="input-group">
+        <span class="input-group-text">
+          <i class="bi bi-lock"></i>
+        </span>
+        <input 
+          [type]="showCurrentPassword ? 'text' : 'password'"
+          id="currentPassword"
+          formControlName="currentPassword"
+          class="form-control "
+          placeholder="Entrer l'ancien mot de passe"
+         
+        />
+        <!-- <button
+          type="button"
+          class="btn btn-outline-secondary"
+          (click)="showCurrentPassword = !showCurrentPassword"
+        >
+          <i class="bi" [ngClass]="showCurrentPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+        </button> -->
+      </div>
+    </div>
+
+    <!-- Nouveau mot de passe -->
+    <div class="mb-3">
+      <!-- <label for="newPassword" class="form-label">Nouveau mot de passe</label> -->
+      <div class=" input-group ">
+        <span class="input-group-text">
+          <i class="bi bi-lock"></i>
+        </span>
+        <input
+          [type]="showNewPassword ? 'text' : 'password'"
+          id="newPassword"
+          formControlName="newPassword"
+          class="form-control"
+          placeholder="Entrer le nouveau mot de passe"
+        />
+        <!-- <button
+          type="button"
+          class="btn btn-outline-secondary"
+          (click)="showNewPassword = !showNewPassword"
+        >
+          <i class="bi" [ngClass]="showNewPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+        </button> -->
+      </div>
+    </div>
+
+    <!-- Confirmer le mot de passe -->
+    <!-- <div class="mb-3">
+     
+      <div class="input-group">
+        <span class="input-group-text">
+          <i class="bi bi-lock"></i>
+        </span>
+        <input
+          [type]="showConfirmPassword ? 'text' : 'password'"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          class="form-control"
+          placeholder="Confirmer le mot de passe"
+        />
+       
+      </div>
+    </div> -->
+
+    <button type="submit" class="btn btn-danger">Modifier le mot de passe</button>
+  </form>
+
+
+
+
+
+        
+      
+
+
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ---------------------------------------FIN MODAL modifier mot de passe -->
+
+
+
+  <app-footerclient></app-footerclient>
+
+ <script >var myModal = document.getElementById('myModal')
+      var myInput = document.getElementById('myInput')
+
+      myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+      })</script>
+
+<script src="Modal/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+

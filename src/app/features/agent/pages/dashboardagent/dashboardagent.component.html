@@ -1,0 +1,205 @@
+<div class="admin-dashboard">
+
+    <!-- ✅ SIDEBAR -->
+    <div class="sidebar" [class.active]="showSidebarMobile || isDesktop">
+      <div class="logo text-center mb-4">
+        <img src="assets/images/LOGO_YAFI__2_-removebg-preview.png" alt="Logo" class="img-fluid" style="max-height: 50px;" />
+      </div>
+
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item mb-2">
+          <a class="nav-link active" href="/agent/dashboard"><i class="bi bi-speedometer2 me-2"></i> Tableau de bord</a>
+        </li>
+
+        <li class="nav-item mb-2">
+          <a class="nav-link " href="/agent/ticket"><i class="bi bi-journal-text me-2"></i> Tickets assignés</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link " href="/agent/profil"><i class="bi bi-person-circle me-2"></i> Profil</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link " href="/agent/password"><i class="bi bi-lock me-2"></i> Mot de passe</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()"><i class="bi bi-box-arrow-right me-2"></i> Déconnexion</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ✅ OVERLAY (petit écran uniquement) -->
+    <div class="sidebar-overlay" [class.active]="showSidebarMobile" (click)="toggleSidebar()"></div>
+
+    <!-- ✅ CONTENU PRINCIPAL -->
+    <div class="main-content">
+      <!-- ✅ NAVBAR HORIZONTALE -->
+      <nav class="navbar navbar-light bg-light shadow-sm px-3 d-flex justify-content-between align-items-center">
+        <button class="btn d-md-none" (click)="toggleSidebar()">
+          <i class="bi bi-list fs-2 text-danger"></i>
+        </button>
+        <span class="navbar-text fw-bold text-uppercase mx-auto">AGENT Yafi</span>
+        <div class="d-none d-md-block" style="width: 40px;"></div>
+      </nav>
+
+      <!-- ✅ -----------------------------------------------------SECTION profil -->
+      <div class="container py-4">
+
+
+
+
+
+
+ <!-- ✅ 1. Carte Bienvenue -->
+ <div class="row mb-4">
+  <div class="col-12">
+    <div class="card welcome-card">
+      <div class="card-body d-flex align-items-center">
+        <img src="assets/images/PERSONNAGE.png" alt="Admin" class="me-3" style="width: 60px; height: 60px;">
+        <div>
+          <h5 class="mb-0 fw-bold">Bienvenue {{ profile?.nom }}</h5>
+          <small class="text-muted">Bon travail aujourd'hui 👋</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- premiere ligne -->
+
+
+<div class="row g-4 mt-1">
+ 
+
+<!--  tickets assignés -->
+  <div class="col-md-6">
+    <div class="card stat-card">
+      <div class="card-body text-center">
+        <i class="bi bi-bar-chart-line-fill fs-1 text-danger"></i>
+        <h6 class="mt-2">Tickets assignés</h6>
+        <h4 class="fw-bold text-danger">{{ stats?.total_tickets }}</h4>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Tickets en cours -->
+  <div class="col-md-6">
+    <div class="card stat-card">
+      <div class="card-body text-center">
+        <i class="bi bi-people-fill fs-1 text-danger"></i>
+        <h6 class="mt-2">Tickets en cours</h6>
+        <h4 class="fw-bold text-danger">{{ stats?.en_cours }}</h4>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+<!-- deuxieme ligne -->
+
+
+
+
+<div class="row g-4 mt-1">
+ 
+
+<!--  tickets résolus -->
+  <div class="col-md-6">
+    <div class="card stat-card">
+      <div class="card-body text-center">
+        <i class="bi bi-bar-chart-line-fill fs-1 text-danger"></i>
+        <h6 class="mt-2">Tickets résolus</h6>
+        <h4 class="fw-bold text-danger">{{ stats?.resolus }}</h4>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Tickets en cours -->
+  <div class="col-md-6">
+    <div class="card stat-card">
+      <div class="card-body text-center">
+        <i class="bi bi-people-fill fs-1 text-danger"></i>
+        <h6 class="mt-2">Tickets réjetés</h6>
+        <h4 class="fw-bold text-danger">{{ stats?.rejetes }}</h4>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+<br><br>
+
+<div class="graph-header bg-white p-4 rounded shadow-sm mb-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
+    <!-- TITRE -->
+    <h4 class="fw-bold text-danger m-0">📊 Graphe du taux de résolution des tickets</h4>
+
+    <div class="form-group m-0">
+<div class="year-filter">
+  <label for="yearSelect" class="form-label fw-semibold text-secondary" >Sélectionnez une année :</label>
+  <select class="form-select border-warning shadow-sm" id="yearSelect" [(ngModel)]="selectedYear" (change)="loadStats()">
+    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+  </select>
+  </div>
+</div>
+</div>
+</div>
+
+<div style="max-width: 100%; margin-top: 30px;">
+  <canvas #chartCanvas></canvas>
+</div>
+
+
+<!-- ✅ 3. Taux + Agents -->
+<div class="row g-4 mt-1">
+  <!-- Taux de résolution
+  <div class="col-md-6">
+    <div class="card stat-card">
+      <div class="card-body text-center">
+        <i class="bi bi-bar-chart-line-fill fs-1 text-danger"></i>
+        <h6 class="mt-2">Taux de résolution des tickets</h6>
+        <h4 class="fw-bold text-danger">63.7%</h4>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Agents -->
+  <!-- <div class="col-md-6">
+    <div class="card stat-card">
+      <div class="card-body text-center">
+        <i class="bi bi-people-fill fs-1 text-danger"></i>
+        <h6 class="mt-2">Nombre total des agents</h6>
+        <h4 class="fw-bold text-danger">12</h4>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+          </div>
+
+
+          <!-- ---------------------------------------------FIN profil -->
+
+
+      </div>
+    </div>
+

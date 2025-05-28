@@ -1,0 +1,93 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .admin-dashboard {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .sidebar {
+    width: 240px;
+    height: 100vh;
+    background-color: #dc3545;
+    color: white;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar .nav-link {
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .sidebar .nav-link:hover {
+    background-color: #f8f9fa;
+    color: #dc3545 !important;
+  }
+
+  .sidebar .nav-link.active {
+    background-color: #f8f9fa;
+    color: #dc3545 !important;
+    font-weight: bold;
+  }
+
+  .main-content {
+    margin-left: 240px;
+    flex-grow: 1;
+    overflow-y: auto;
+    height: 100vh;
+    transition: margin-left 0.3s ease;
+  }
+
+  .ticket-card {
+    border-left: 4px solid #dc3545;
+    transition: transform 0.2s ease;
+  }
+
+  .ticket-card:hover {
+    transform: scale(1.01);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+      transform: translateX(0);
+    }
+    .sidebar.active {
+      z-index: 1060;
+    }
+    
+
+    .main-content {
+      margin-left: 0;
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1040;
+      display: none;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
+    }
+  }

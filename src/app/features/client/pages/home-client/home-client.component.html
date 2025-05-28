@@ -1,0 +1,32 @@
+<app-navbarclient></app-navbarclient>
+
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div style="width: 700px;">
+      <h2 class="text-center mb-3">{{ profile?.nom }}</h2>
+      <h4 class="text-center mb-4">
+        Bienvenue sur votre espace d'assistance. Posez vos questions à notre chatbot et suivez l'évolution
+        de vos tickets en temps réel.
+      </h4>
+
+      <ul class="custom-list">
+        <li>
+          Discutez avec notre chatbot pour obtenir des réponses instantanées à vos questions.
+        </li>
+        <li>
+          Création automatique de tickets si le chatbot ne trouve pas de solution à votre problème.
+        </li>
+        <li>
+          Suivez l'évolution de vos billets et échangez avec nos agents pour une résolution rapide.
+        </li>
+      </ul>
+      <br>
+      <div class="text-center"><button class="btn btn-danger" (click)=" navigateToCahtbot()">Poser une question</button></div>
+    </div>
+  </div>
+
+
+
+  <app-footerclient></app-footerclient>
+
+
+

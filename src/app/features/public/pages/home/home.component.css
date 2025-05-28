@@ -1,0 +1,46 @@
+ /* Ajustement du logo */
+ /* nav{
+    height: 80px;
+ } */
+ .navbar-brand img {
+    height: 60px; /* Taille automatique adaptée à la navbar */
+    width: auto;
+}
+.nav-link{
+    color: #000!important; 
+}
+.nav-link:hover{
+    color: #dc3545!important; 
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-5%);
+    
+}
+
+/* Section avec l'image en-dessous de la navbar */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay léger pour améliorer la lisibilité */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Plus léger */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}

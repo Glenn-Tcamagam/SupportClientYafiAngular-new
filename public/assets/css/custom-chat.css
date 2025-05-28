@@ -1,0 +1,58 @@
+/* Conteneur principal du widget */
+#my-chat-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  width: 350px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Message envoyé par l'utilisateur */
+.bpw-from-user .bpw-message-bubble {
+  background-color: #0d6efd !important;
+  color: white !important;
+  border-radius: 20px;
+  border-bottom-right-radius: 0 !important;
+  padding: 10px 15px !important;
+  max-width: 75% !important;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Message du bot */
+.bpw-from-bot .bpw-message-bubble {
+  background-color: #f1f1f1 !important;
+  color: #333 !important;
+  border-radius: 20px;
+  border-bottom-left-radius: 0 !important;
+  padding: 10px 15px !important;
+  max-width: 75% !important;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Conteneur général */
+.bpw-layout {
+  background-color: #ffffff !important;
+  border-radius: 12px !important;
+  padding: 1rem !important;
+}
+
+/* En-tête du widget */
+.bpw-header-container {
+  background-color: #0d6efd !important;
+  color: white !important;
+  font-weight: bold;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}

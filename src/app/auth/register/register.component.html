@@ -1,0 +1,154 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+    <div class="container">
+     
+        <a class="navbar-brand">
+            <img src="/assets/images/LOGO_YAFI-removebg-preview.png" alt="Logo" height="50px"> <!-- Remplace par ton logo -->
+        </a>
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+    </div>
+</nav>
+<div id="petitecran"> 
+ <br><br><br><br><br><br>
+ </div>
+<!-- Contenu -->
+<div class="container-fluid login-container">
+    <div class="row w-100">
+
+        <!-- Partie gauche : Image -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center img-container">
+            <img src="/assets/images/1.png" alt="Image de connexion">
+        </div>
+
+
+        <!-- Partie droite : Formulaire -->
+        <div class="col-md-6 d-flex ">
+            <div class="card p-4 login-card">
+                <h3 class="text-center fw-bold">S'ENREGISTRER</h3>
+
+            <form  [formGroup]="registerForm" (ngSubmit)="register()">
+                 <!-- Champ Nom -->
+                 <div class="mb-3">
+                    <!-- <label class="form-label">Nom</label> -->
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        <input type="text" class="form-control" placeholder="Entrer votre nom" formControlName="nom">
+                        </div>
+                        <div *ngIf="submitted && f['nom'].errors" class="text-danger">
+                            <small *ngIf="f['nom'].errors['required']">Le nom est requis.</small>
+                            <small *ngIf="f['nom']errors['minlength']">Minimum 2 caractères.</small>
+                          
+                    </div>
+                </div>
+
+                <!-- Champ Email -->
+                <div class="mb-3">
+                    <!-- <label class="form-label">Email</label> -->
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" class="form-control" placeholder="Entrer votre email" formControlName="email">
+                        </div>
+                        <div *ngIf="submitted && f['email'].errors" class="text-danger">
+                            <small *ngIf="f['email'].errors['required']">L’email est requis.</small>
+                            <small *ngIf="f['email'].errors['email']">Email invalide.</small>
+                          
+                    </div>
+                </div>
+
+                <!-- Champ Telephone -->
+                <div class="mb-3">
+                    <!-- <label class="form-label">Email</label> -->
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                        <input type="number" class="form-control" placeholder="Entrer votre télephone" formControlName="telephone">
+                        </div>
+                        <div *ngIf="submitted && f['telephone'].errors" class="text-danger">
+                            <small *ngIf="f['telephone'].errors['required']">Le numéro est requis.</small>
+                            <small *ngIf="f['telephone'].errors['pattern']">Numéro invalide (8 à 15 chiffres).</small>
+                          
+                    </div>
+                </div>
+
+                <!-- Champ ville -->
+                <!-- <div class="mb-3"> -->
+                    <!-- <label class="form-label">Email</label> existe pas ca doit rester connecter -->
+                    <!-- <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-house"></i></span>
+                        <input type="text" class="form-control" placeholder="Entrer votre ville" formControlName="ville">
+                        <div *ngIf="submitted && f['ville'].errors" class="text-danger">
+                            <small>La ville est requise.</small>
+                          </div>
+                    </div>
+                </div> -->
+
+                <!-- Champ Mot de passe -->
+                <div class="mb-3" >
+                    <!-- <label class="form-label">Mot de passe</label> -->
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <!-- <input type="password" class="form-control" id="password" placeholder="Entrer votre mot de passe" formControlName="password"> -->
+                        <input placeholder="Mot de passe" [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="password">
+                        <!-- <button type="button" class="btn btn-outline-secondary" (click)="togglePassword()">
+                            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+                          </button> -->
+                    </div>
+                    <div *ngIf="submitted && f['password'].errors" class="text-danger">
+                        <small *ngIf="f['password'].errors['required']">Mot de passe requis.</small>
+                        <small *ngIf="f['password'].errors['minlength']">Minimum 8 caractères.</small>
+                        <small *ngIf="f['password'].errors['pattern']">
+                          Doit contenir une majuscule, une minuscule, un chiffre et un caractère spécial.
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Champ Confime Mot de passe -->
+                <div class="mb-3">
+                    <!-- <label class="form-label">Mot de passe</label> -->
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <!-- <input type="password" class="form-control" id="password" placeholder="Confirmez votre mot de passe"> -->
+                        <input placeholder="Confirmer Mot de passe" [type]="showPassword ? 'text' : 'password'" class="form-control" formControlName="confirmPassword">
+                        <div *ngIf="submitted && registerForm.errors?.['notMatching']" class="text-danger">
+                            <small> Les mots de passe ne correspondent pas ...</small>
+                          </div>
+                        <!-- <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
+                            <i class="bi bi-eye" id="eye-icon"></i>
+                        </button> -->
+                    </div>
+                </div>
+
+                <!-- Bouton Se connecter -->
+                <button class="btn btn-danger w-100" type="submit" >S'enregistrer</button>
+
+                <!-- Lien vers inscription -->
+                <div class="text-center mt-3">
+                    <small>Avez-vous deja un compte ?  <a style="color: brown;" (click)="navigateToLogin()">Connectez-vous</a></small>
+                </div>
+
+            </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<p *ngIf="successMessage">{{ successMessage }}</p>
+<p *ngIf="errorMessage" style="color:red">{{ errorMessage }}</p>
+
+<!-- Script pour masquer/afficher le mot de passe -->
+<!-- <script>
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eye-icon');
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.replace("bi-eye", "bi-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.replace("bi-eye-slash", "bi-eye");
+        }
+    }
+</script> -->

@@ -1,0 +1,28 @@
+.navbar-brand img {
+    height: 60px; /* Taille automatique adaptée à la navbar */
+    width: auto;
+}
+.nav-link{
+    color: #fff!important; 
+}
+.nav-link:hover{
+    color: #ffffffc9!important; 
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-5%);
+    
+}
+
+
+.custom-list {
+    padding-left: 1.2rem; /* pour un petit décalage */
+  }
+
+  .custom-list li {
+    margin-bottom: 1rem;
+    color: #212529;
+    position: relative;
+  }
+
+  .custom-list li::marker {
+    color: #dc3545; /* rouge Bootstrap */
+  }

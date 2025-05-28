@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand">
+            <img src="/assets/images/LOGO_YAFI-removebg-preview.png" alt="Logo" height="50px"> <!-- Remplace par ton logo -->
+        </a>
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button> -->
+    </div>
+</nav>
+<div id="petitecran"> 
+ <br><br><br><br><br><br><br>
+ </div>
+
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<!-- Contenu -->
+<div class="container-fluid login-container">
+    <div class="row w-100">
+
+
+
+        <!-- Partie droite : Formulaire -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="card p-4 login-card">
+                <h3 class="text-center fw-bold">SE CONNECTER</h3>
+
+                <!-- Champ Email -->
+                <div class="mb-3">
+                    <label class="form-label" >Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input type="email" formControlName="email" class="form-control" placeholder="Entrer votre email">
+                    </div>
+                </div>
+
+                <!-- Champ Mot de passe -->
+                <div class="mb-3">
+                    <label class="form-label">Mot de passe</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input type="password" formControlName="password" class="form-control" id="password" placeholder="Entrer votre mot de passe">
+                        <!-- <button class="btn btn-outline-secondary" type="button" onclick="togglePassword()">
+                            <i class="bi bi-eye" id="eye-icon"></i>
+                        </button> -->
+                    </div>
+                </div>
+
+                <!-- Bouton Se connecter -->
+                <button class="btn btn-danger w-100" type="submit">Se connecter</button>
+
+                <!-- Lien vers inscription -->
+                <div class="text-center mt-3">
+                    <small>Vous n'avez pas de compte ? <a style="color: brown;" (click)="navigateToRegister()">S'enregistrer</a></small>
+                </div>
+            </div>
+        </div>
+
+ <!-- Partie gauche : Image -->
+ <div class="col-md-6 d-flex align-items-center justify-content-center img-container">
+    <img src="/assets/images/2.png" alt="Image de connexion">
+</div>
+
+
+    </div>
+</div>
+
+
+</form>
+
+<!-- Script pour masquer/afficher le mot de passe -->
+<script>
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eye-icon');
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.replace("bi-eye", "bi-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.replace("bi-eye-slash", "bi-eye");
+        }
+    }
+</script>

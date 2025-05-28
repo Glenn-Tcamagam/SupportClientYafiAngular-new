@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand">
+            <img src="/assets/images/LOGO_YAFI-removebg-preview.png" alt="Logo" height="50px"> <!-- Remplace par ton logo -->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="home" >Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://yafiapp.com/elementor-1984/">À Propos</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://yafiapp.com/contact/">Contact</a></li>
+                <li class="nav-item"><a class="btn btn-outline-danger ms-3"  (click)="navigateToLogin()">Connexion</a></li>
+                <li class="nav-item"><a class="btn btn-warning ms-2"  (click)="navigateToRegister()">Inscription</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Section Image avec Texte Centré -->
+<section class="hero">
+    <img src="/assets/images/photo_5880006886642795910_x (1).jpg" alt="Image d'accueil">
+    <div class="hero-overlay">
+        <div>
+            <h1 class="display-4 fw-bold">Bienvenue sur notre plateforme d'assistance</h1>
+            <p class="lead">Connectez-vous ou créez un compte pour poser vos questions et suivre vos tickets en toute simplicité.</p>
+            <div class="mt-4">
+                <a class="btn btn-warning btn-lg me-2"  (click)="navigateToRegister()">Inscription</a>
+                <a  class="btn btn-danger btn-lg" (click)="navigateToLogin()">Connexion</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<app-footerpublic></app-footerpublic>
