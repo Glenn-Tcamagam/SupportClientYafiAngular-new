@@ -60,5 +60,7 @@ onSubmit2() {
     }
   }
 
-
+navigateToLogin(){
+    this.router.navigate(['/auth/login'])
+  }
 }
